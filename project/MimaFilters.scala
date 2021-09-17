@@ -81,6 +81,7 @@ object MimaFilters extends AutoPlugin {
 
     // #9752
     ProblemFilters.exclude[MissingTypesProblem]("scala.reflect.ClassTag$cache$"),
+    ProblemFilters.exclude[MissingClassProblem]("scala.runtime.ModuleSerializationProxy$"),
     ProblemFilters.exclude[MissingTypesProblem]("scala.reflect.runtime.JavaMirrors$JavaMirror$typeTagCache$"),
     ProblemFilters.exclude[MissingTypesProblem]("scala.reflect.runtime.JavaMirrors$JavaMirror$typeTagCache$"),
     ProblemFilters.exclude[MissingClassProblem]("scala.compat.ClassValueCompat"),
