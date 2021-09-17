@@ -37,6 +37,7 @@ import scala.collection.mutable.ListBuffer
 import internal.Flags._
 import ReflectionUtils._
 import scala.annotation.nowarn
+import scala.compat.ClassValueCompat
 import scala.reflect.api.TypeCreator
 import scala.runtime.{ BoxesRunTime, ScalaRunTime }
 
@@ -120,7 +121,7 @@ private[scala] trait JavaMirrors extends internal.SymbolTable with api.JavaUnive
     private[this] val fieldCache       = new TwoWayCache[jField, TermSymbol]
     private[this] val tparamCache      = new TwoWayCache[jTypeVariable[_ <: GenericDeclaration], TypeSymbol]
 
-    private[this] object typeTagCache extends ClassValue[jWeakReference[TypeTag[_]]]() {
+    private[this] object typeTagCache extends ClassValueCompat[jWeakReference[TypeTag[_]]]() {
       val typeCreator = new ThreadLocal[TypeCreator]()
 
       override protected def computeValue(cls: jClass[_]): jWeakReference[TypeTag[_]] = {
